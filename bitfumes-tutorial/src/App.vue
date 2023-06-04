@@ -1,10 +1,13 @@
 <template>
   <ul>
     <li v-for="(hero , index) in dcHeros" :key="index"> 
-     {{ index }} : {{  hero.name }}
+      {{  hero.name }}
     </li>
   </ul>
-  <input :value = "newHero" />
+  <form @submit.prevent="submitForm">
+    <input v-model="newHero" placeholder="Type new hero"/>
+    <button type="submit">Add Hero</button>
+  </form>
 </template>
 
 <script>
@@ -19,6 +22,13 @@ export default
         { name: "Flash"  },
         { name: "Arrow" }
       ]
+    }
+  },
+  methods: { 
+    submitForm()
+    {
+      this.dcHeros.push({name:this.newHero});
+      this.newHero = "";
     }
   }
 }
