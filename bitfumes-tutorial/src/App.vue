@@ -1,8 +1,8 @@
 <template>
-  <h2>Super Hero List</h2>
+  <h2>Total Super Hero {{ totalHero }}</h2>
   <ul>
     <li v-for="(hero , index) in dcHeros" :key="index"> 
-      {{  hero.name }}
+      <div>{{  hero.name }} <button @click="remove(index)">x</button></div>
     </li>
   </ul>
   <form @submit.prevent="submitForm">
@@ -14,6 +14,11 @@
 <script>
 export default 
 {
+  computed:{
+    totalHero(){
+      return this.dcHeros.length 
+    }
+  },
   data(){
     return {
       newHero: "Aquaman",
@@ -22,7 +27,8 @@ export default
         { name: "superman"  },
         { name: "Flash"  },
         { name: "Arrow" }
-      ]
+      ],
+
     }
   },
   methods: { 
@@ -33,7 +39,9 @@ export default
         this.dcHeros.push({name:this.newHero});
         this.newHero = "";
       }
-      
+    },
+    remove(index){
+      this.dcHeros = this.dcHeros.filter((hero,i) => i != index );
     }
   }
 }
