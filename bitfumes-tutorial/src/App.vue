@@ -1,14 +1,21 @@
 <template>
-  <h2>Total Super Hero {{ totalHero }}</h2>
-  <ul>
-    <li v-for="(hero , index) in dcHeros" :key="index"> 
-      <div>{{  hero.name }} <button @click="remove(index)">x</button></div>
-    </li>
-  </ul>
-  <form @submit.prevent="submitForm">
-    <input v-model="newHero" placeholder="Type new hero"/>
-    <button type="submit">Add Hero</button>
-  </form>
+  <div class="w-full flex">
+    <div class="m-auto">
+      <h2 class="text-2xl text-center"> Total Super Hero {{ totalHero }}</h2>
+      <ul>
+        <li class="flex justify-between" v-for="(hero , index) in dcHeros" :key="index"> 
+          <div>{{  hero.name }} </div>
+          <button @click="remove(index)">x</button>
+        </li>
+      </ul>
+      <form class="mt-10" @submit.prevent="submitForm">
+        <input class="border rounded-lg" v-model="newHero" placeholder="Type new hero"/>
+        <button class="border rounded bg-gradient-to-t from-red-700 to-pink-500 text-white"  type="submit">Add Hero</button>
+      </form>
+    </div>
+  </div>
+  
+  
 </template>
 
 <script>
