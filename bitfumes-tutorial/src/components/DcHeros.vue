@@ -1,6 +1,6 @@
 <template>
   <div class="m-auto">
-      <h2 class="text-2xl text-center"> Total Super Hero {{ totalHero }}</h2>
+      <h2 class="text-2xl text-center mt-10"> Total Super Hero {{ totalHero }}</h2>
       <ul>
         <li class="flex justify-between" v-for="(hero , index) in dcHeros" :key="index"> 
           <div>{{  hero.name }} </div>
