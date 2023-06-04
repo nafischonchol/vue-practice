@@ -1,4 +1,5 @@
 <template>
+  <h2>Super Hero List</h2>
   <ul>
     <li v-for="(hero , index) in dcHeros" :key="index"> 
       {{  hero.name }}
@@ -27,8 +28,12 @@ export default
   methods: { 
     submitForm()
     {
-      this.dcHeros.push({name:this.newHero});
-      this.newHero = "";
+      if(this.newHero !== "")
+      {
+        this.dcHeros.push({name:this.newHero});
+        this.newHero = "";
+      }
+      
     }
   }
 }
