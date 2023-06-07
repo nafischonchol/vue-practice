@@ -2,12 +2,26 @@ import { createWebHistory, createRouter } from "vue-router";
 import home from "./pages/home.vue";
 import login from "./pages/login.vue";
 import register from "./pages/register.vue";
+import addBuilding from "./pages/addBuilding.vue";
+import buildingList from "./pages/buildingList.vue";
+
+
 
 const routes = [
     {
         path: '/',
         name: "Home",
         component: home
+    },
+    {
+        path: '/building/add',
+        name: "AddBuilding",
+        component: addBuilding
+    },
+    {
+        path: '/building/list',
+        name: "AddBuilding",
+        component: addBuilding
     },
     {
         path: '/login',
