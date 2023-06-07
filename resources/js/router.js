@@ -20,8 +20,8 @@ const routes = [
     },
     {
         path: '/building/list',
-        name: "AddBuilding",
-        component: addBuilding
+        name: "BuildingList",
+        component: buildingList
     },
     {
         path: '/login',
