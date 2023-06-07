@@ -2,9 +2,7 @@
     <!--start top header-->
     <div class="wrapper">
         <router-view name="layouts" />
-        <main class="page-content">
-            <router-view/>
-        </main>
+        <router-view/>
         
         <div class="overlay nav-toggle-icon"></div>
 

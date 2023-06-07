@@ -7,50 +7,46 @@ import buildingList from "./pages/buildingList.vue";
 import main from "./layouts/main.vue";
 import guestLayout from "./layouts/guestLayout.vue";
 
-
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: main, // Apply layout to the home page
-    children: [
-      {
-        path: "",
-        component: home
-      }
-    ]
+    components: {
+      default: home,
+      layouts: main
+    }
   },
   {
     path: "/building/add",
     name: "AddBuilding",
-    component: main, // Apply layout to the AddBuilding page
-    children: [
-      {
-        path: "",
-        component: addBuilding
-      }
-    ]
+    components: {
+      default: addBuilding,
+      layouts: main
+    }
   },
   {
     path: "/building/list",
     name: "BuildingList",
-    component: main, // Apply layout to the BuildingList page
-    children: [
-      {
-        path: "",
-        component: buildingList
-      }
-    ]
+    components: {
+      default: buildingList,
+      layouts: main
+    }
   },
   {
     path: "/login",
     name: "Login",
-    component: login // No layout for the login page
+    components: {
+      default: login,
+      layouts: guestLayout
+    }
   },
   {
     path: "/register",
     name: "Register",
-    component: register // No layout for the register page
+    components: {
+      default: register,
+      layouts: guestLayout
+    }
   }
 ];
 

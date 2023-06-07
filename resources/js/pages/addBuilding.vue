@@ -1,4 +1,5 @@
 <template>
+  <main class="page-content">
     <div class="row">
       <div class="col-lg-12 mx-auto">
         <div class="card">
@@ -99,6 +100,7 @@
         </div>
       </div>
     </div>
+  </main>
   
     <!--end row-->
   </template>
