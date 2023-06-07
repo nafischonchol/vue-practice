@@ -7,9 +7,9 @@
             <div class="d-sm-flex align-items-center">
               <h5 class="mb-2 mb-sm-0">Add New Building</h5>
               <div class="ms-auto">
-                <a href="/building/list" class="btn btn-secondary m-1">
+                <router-link to="/building/list" class="btn btn-secondary m-1">
                   Building List
-                </a>
+                </router-link>
               </div>
             </div>
           </div>
