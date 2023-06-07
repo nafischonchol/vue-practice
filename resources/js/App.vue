@@ -1,10 +1,9 @@
 <template>
     <!--start top header-->
     <div class="wrapper">
-        <Header />
-        <Aside />
+        <router-view name="layouts" />
         <main class="page-content">
-            <router-view></router-view>
+            <router-view/>
         </main>
         
         <div class="overlay nav-toggle-icon"></div>
@@ -14,14 +13,6 @@
         ></a>
     </div>
 </template>
-<script>
-import Aside from "./layouts/aside.vue";
-import Header from "./layouts/header.vue";
 
-export default {
-    components: {Aside,Header}
-}
-
-</script>
 
 

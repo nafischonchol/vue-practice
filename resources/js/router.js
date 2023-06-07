@@ -4,40 +4,54 @@ import login from "./pages/login.vue";
 import register from "./pages/register.vue";
 import addBuilding from "./pages/addBuilding.vue";
 import buildingList from "./pages/buildingList.vue";
-
-
+import main from "./layouts/main.vue";
 
 const routes = [
-    {
-        path: '/',
-        name: "Home",
-        component: home
-    },
-    {
-        path: '/building/add',
-        name: "AddBuilding",
-        component: addBuilding
-    },
-    {
-        path: '/building/list',
-        name: "BuildingList",
-        component: buildingList
-    },
-    {
-        path: '/login',
-        name: "Login",
-        component: login
-    },
-    {
-        path: '/register',
-        name: "Register",
-        component: register
+  {
+    path: "/",
+    name: "Home",
+    components: {
+      default: home, 
+      layouts: main 
     }
+  },
+  {
+    path: "/building/add",
+    name: "AddBuilding",
+    components: {
+        default: addBuilding, 
+        layouts: main 
+      }
+  },
+  {
+    path: "/building/list",
+    name: "BuildingList",
+    components: {
+        default: buildingList, 
+        layouts: main 
+      }
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component:{
+        default: login,
+        layouts: ''
+    }
+  },
+  {
+    path: "/register",
+    name: "Register",
+    components: {
+        default: register, 
+        layouts: "" 
+      }
+  }
 ];
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes
+  history: createWebHistory(),
+  routes
 });
 
 export default router;
