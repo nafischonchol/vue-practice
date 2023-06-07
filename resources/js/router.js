@@ -1,12 +1,12 @@
 import { createWebHistory, createRouter } from "vue-router";
 import { useToast } from 'vue-toastification';
-import home from "./pages/home.vue";
-import login from "./pages/login.vue";
-import register from "./pages/register.vue";
-import addBuilding from "./pages/addBuilding.vue";
-import buildingList from "./pages/buildingList.vue";
-import main from "./layouts/main.vue";
-import guestLayout from "./layouts/guestLayout.vue";
+import home from "@/pages/home.vue";
+import login from "@/pages/login.vue";
+import register from "@/pages/register.vue";
+import addBuilding from "@/pages/addBuilding.vue";
+import buildingList from "@/pages/buildingList.vue";
+import main from "@/layouts/main.vue";
+import guestLayout from "@/layouts/guestLayout.vue";
 
 const routes = [
   {

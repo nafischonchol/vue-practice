@@ -16,7 +16,7 @@
           <router-link to="/building/add"><i class="bi bi-circle"></i>Add Building</router-link>
         </li>
         <li>
-          <router-link to="/building/add"><i class="bi bi-circle"></i>Building List</router-link>
+          <router-link to="/building/list"><i class="bi bi-circle"></i>Building List</router-link>
         </li>
       </ul>
     </li>

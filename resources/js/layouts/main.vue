@@ -4,8 +4,8 @@
 </template>
 
 <script>
-import Aside from "./aside.vue";
-import Header from "./header.vue";
+import Aside from "@/layouts/aside.vue";
+import Header from "@/layouts/header.vue";
 
 export default {
     components: {Aside,Header}
