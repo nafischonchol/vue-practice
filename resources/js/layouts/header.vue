@@ -110,15 +110,12 @@
               </li>
               <li><hr class="dropdown-divider" /></li>
               <li>
-                <a
-                  class="dropdown-item"
-                  href="authentication-signup-with-header-footer.html"
-                >
+                <div class="dropdown-item cursor-pointer" @click="logout">
                   <div class="d-flex align-items-center">
                     <div class=""><i class="bi bi-lock-fill"></i></div>
                     <div class="ms-3"><span>Logout</span></div>
                   </div>
-                </a>
+                </div>
               </li>
             </ul>
           </li>
@@ -717,3 +714,14 @@
     </nav>
   </header>
 </template>
+
+<script setup>
+  import { useRouter } from 'vue-router';
+  const router = useRouter();
+  function logout()
+  {
+    localStorage.removeItem('scantumToken');
+    router.push('/login');
+  }
+</script>
+
