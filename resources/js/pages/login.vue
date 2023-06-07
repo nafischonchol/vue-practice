@@ -136,7 +136,7 @@ export default {
            
             this.form = {};
             this.toast.success(response.data.message);
-            // this.$inertia.visit('/');
+            this.$router.push('/');
           } else {
             this.toast.error(response.data.message);
           }
