@@ -5,47 +5,52 @@ import register from "./pages/register.vue";
 import addBuilding from "./pages/addBuilding.vue";
 import buildingList from "./pages/buildingList.vue";
 import main from "./layouts/main.vue";
+import guestLayout from "./layouts/guestLayout.vue";
+
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    components: {
-      default: home, 
-      layouts: main 
-    }
+    component: main, // Apply layout to the home page
+    children: [
+      {
+        path: "",
+        component: home
+      }
+    ]
   },
   {
     path: "/building/add",
     name: "AddBuilding",
-    components: {
-        default: addBuilding, 
-        layouts: main 
+    component: main, // Apply layout to the AddBuilding page
+    children: [
+      {
+        path: "",
+        component: addBuilding
       }
+    ]
   },
   {
     path: "/building/list",
     name: "BuildingList",
-    components: {
-        default: buildingList, 
-        layouts: main 
+    component: main, // Apply layout to the BuildingList page
+    children: [
+      {
+        path: "",
+        component: buildingList
       }
+    ]
   },
   {
     path: "/login",
     name: "Login",
-    component:{
-        default: login,
-        layouts: ''
-    }
+    component: login // No layout for the login page
   },
   {
     path: "/register",
     name: "Register",
-    components: {
-        default: register, 
-        layouts: "" 
-      }
+    component: register // No layout for the register page
   }
 ];
 
