@@ -27,9 +27,9 @@
       </a>
       <ul>
         <li>
-          <Link href="/toast"
+          <a href="widgets-data-widgets.html"
             ><i class="bi bi-circle"></i>Add Flat
-          </Link>
+          </a>
         </li>
         <li>
           <a href="widgets-data-widgets.html"
