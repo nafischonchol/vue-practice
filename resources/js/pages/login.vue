@@ -136,7 +136,8 @@ export default {
            
             this.form = {};
             this.toast.success(response.data.message);
-            this.$router.push('/');
+            // this.$router.push('/'); // menu didn't load properly
+            window.location.href = window.location.origin;
           } else {
             this.toast.error(response.data.message);
           }
