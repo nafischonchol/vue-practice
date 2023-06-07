@@ -1,4 +1,5 @@
 import { createWebHistory, createRouter } from "vue-router";
+import { useToast } from 'vue-toastification';
 import home from "./pages/home.vue";
 import login from "./pages/login.vue";
 import register from "./pages/register.vue";
@@ -30,7 +31,7 @@ const routes = [
     components: {
       default: buildingList,
       layouts: main
-    }
+    },
   },
   {
     path: "/login",
@@ -38,7 +39,8 @@ const routes = [
     components: {
       default: login,
       layouts: guestLayout
-    }
+    },
+    meta: { guestOnly: true }, 
   },
   {
     path: "/register",
@@ -53,6 +55,21 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes
+});
+
+// Add route guard to check for authentication
+router.beforeEach((to, from, next) => {
+  const toast = useToast();
+  const requiresAuth = !to.meta.guestOnly; 
+  const isAuthenticated = !!localStorage.getItem('scantumToken'); 
+  if (requiresAuth && !isAuthenticated) {
+    toast.error('You need to log in to access this page.');
+    next({ path: '/login' });
+  } else if (to.path === '/login' && isAuthenticated) {
+    next({ path: '/' });
+  } else {
+    next();
+  }
 });
 
 export default router;
