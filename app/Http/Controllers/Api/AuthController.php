@@ -7,20 +7,18 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\LoginRequest;
 use Hash;
+use App\Exceptions\CredentialsMismatchException;
+use Illuminate\Support\Facades\Log;
+
 class AuthController extends Controller
 {
     public function login(LoginRequest $request)
     {
         try 
         {
-            // $request->validate([
-            //     'email' => 'required|email',
-            //     'password' => 'required|min:8',
-            // ]);
-            
             $user = User::where("email",$request->email)->first();
             if (!$user || !Hash::check($request->password, $user->password))
-                throw new \Exception("These credentials do not match our records");
+                throw new CredentialsMismatchException();
            
             $token = $user->createToken('my-app-token')->plainTextToken;
             $data = array();
@@ -29,7 +27,7 @@ class AuthController extends Controller
             $data["name"] = $user->name;
             $data['token'] =$token;
            
-            return response()->json(['message' => 'Login Success','status'=>200,'data'=>$data])->withCookie(cookie('scantumToken', $token, config('session.lifetime'), null, null, config('session.secure'), true));;
+            return response()->json(['message' => 'Login Success','status'=>200,'data'=>$data]);
         }
         catch (\Illuminate\Validation\ValidationException $e) {
         
@@ -39,8 +37,12 @@ class AuthController extends Controller
                 'errors' => $errors,
             ], 422);
         }
+        catch (CredentialsMismatchException $e) {
+            return response()->json(['message' => $e->getMessage()], $e->getCode());
+        }
         catch (\Exception $e) 
         {
+            Log::error($e->getMessage());
             return response()->json(['message' => 'An error occurred'], 500);
         }
     }

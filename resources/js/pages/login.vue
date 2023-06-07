@@ -144,8 +144,12 @@ export default {
         .catch((error) => {
           if (error && error.response.status === 422) {
             this.allErrors.record(error.response.data.errors);
-          } else {
-            this.toast.error("Login failded!");
+          } 
+          else if (error.response.status === 401) {
+            this.toast.error(error.response.data.message);
+          } 
+          else {
+            this.toast.error("Login failed!");
           }
         });
     },
