@@ -100,11 +100,13 @@
 <script>
 import axios from "@/axios-config";
 import Errors from "@/errors/errors.js";
+import { useToast } from "vue-toastification";
 
 export default {
   data() {
     return {
       allErrors: new Errors(),
+      toast: useToast(),
       form: {
         email: "",
         password: "",
@@ -126,7 +128,8 @@ export default {
       axios
         .post("/api/v1/login", this.form)
         .then((response) => {
-          if (response.data.status == 200) {
+          if (response.data.status == 200) 
+          {
             console.log(response.data);
             let token = response.data.data.token;
             localStorage.setItem("scantumToken", token); // Store the token in local storage
@@ -135,14 +138,14 @@ export default {
             this.toast.success(response.data.message);
             // this.$inertia.visit('/');
           } else {
-            console.log(response.data.message);
+            this.toast.error(response.data.message);
           }
         })
         .catch((error) => {
           if (error && error.response.status === 422) {
             this.allErrors.record(error.response.data.errors);
           } else {
-            console.log("Login failded!");
+            this.toast.error("Login failded!");
           }
         });
     },
