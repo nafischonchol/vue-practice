@@ -48,7 +48,8 @@ const routes = [
     components: {
       default: register,
       layouts: guestLayout
-    }
+    },
+    meta: { guestOnly: true }, 
   }
 ];
 
