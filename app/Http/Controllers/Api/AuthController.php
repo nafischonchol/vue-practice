@@ -3,20 +3,27 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\User;
 use App\Http\Requests\LoginRequest;
 use Hash;
 use App\Exceptions\CredentialsMismatchException;
 use Illuminate\Support\Facades\Log;
+use App\Repositories\UserRepository;
+
 
 class AuthController extends Controller
 {
+    private $userRepo;
+
+    public function __construct(UserRepository $userRepo)
+    {
+        $this->userRepo = $userRepo;
+    }
+
     public function login(LoginRequest $request)
     {
         try 
         {
-            $user = User::where("email",$request->email)->first();
+            $user = $this->userRepo->getByEmail($request->email);
             if (!$user || !Hash::check($request->password, $user->password))
                 throw new CredentialsMismatchException();
            
